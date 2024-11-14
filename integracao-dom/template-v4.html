@@ -1,0 +1,35 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+
+    <!-- O Vue monta esse elemento uma única vez e para de monitorar -->
+    <p v-once>{{ titulo }}</p>
+
+    <!-- Esse elemento ele continua monitorando -->
+    <p>{{ saudacao() }}</p>
+
+    <a v-bind:href="link" target="_blank">Google</a>
+
+</div>
+
+<script>
+
+    new Vue({
+
+        el: '#app',
+
+        data: {
+            /* Joga esse valor na variável 'titulo' e ja aplica no template*/
+            titulo: 'Bom dia, usando Vue Js',
+            link: 'https://google.com' 
+        },
+
+        methods: {
+            saudacao: function () {
+                /* Modifica o valor de título e joga no template. Como o primeiro elemento não está sendo monitorado, continua no valor anterior */
+                this.titulo = 'Boa tarde, deixando o React Js'
+                return this.titulo
+            }
+        }
+    })
+</script>
