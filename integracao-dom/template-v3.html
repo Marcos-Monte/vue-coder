@@ -1,0 +1,30 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+
+    <p>{{ saudacao() }}</p>
+
+    <!-- Diretiva 'v-bind' + propriedade da tag, garante que o link da Instancia Vue funcione no Browser -->
+    <!-- Faz uma ligação entre o dado que está na 'Vue Instance' e a propriedade  da tag -->
+    <a v-bind:href="link" target="_blank">Google</a>
+
+</div>
+
+<script>
+
+    new Vue({
+
+        el: '#app',
+
+        data: {
+            titulo: 'Bom dia, usando Vue Js',
+            link: 'https://google.com' /* Link a ser acessado pelo usuário no browser */
+        },
+
+        methods: {
+            saudacao: function () {
+                return this.titulo
+            }
+        }
+    })
+</script>
