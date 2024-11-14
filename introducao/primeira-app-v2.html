@@ -1,0 +1,45 @@
+<!-- Importando cdn do Vue direto no html -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<!-- Elemento div que sofre manipulação usando Vue -->
+<div id='app'>
+
+    <!-- Input do Usuário: O que escreve aqui aparece na tela -->
+    <input type="text" v-on:input="alterartitulo">
+    <input type="text" v-on:input="alterartexto">
+
+    <!-- Elementos manipuláveis pelo Vue -->
+    <!-- Para se tornar 'acessível' o elemento deve estar entre 'double mustache' -->
+    <div>
+        <p>
+            {{titulo}}
+        </p>
+        <p>
+            {{texto}}
+        </p>
+    </div>
+</div>
+
+<!-- Script Java Script  -->
+<script>
+
+    /* Criando novo Objeto Vue */
+    const objetivoVue = new Vue({
+        /* Qual elemento (DOM Html) será manipulado */
+        el: '#app',
+        /* Dados que serão manipulados */
+        data: {
+            titulo: 'Usando Vue Js!',
+            texto: 'Valdomiro Pimpão'
+        },
+        /* Métodos de Manipulação dos elementos */
+        methods: {
+            alterartitulo: function(event){
+                this.titulo = event.target.value
+            },
+            alterartexto: function(event){
+                this.texto = event.target.value
+            }
+        }
+    })
+</script>
