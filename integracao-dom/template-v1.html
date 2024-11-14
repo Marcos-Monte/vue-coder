@@ -1,0 +1,35 @@
+<!-- Importando CDN do Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<!-- Elemento que será manipulado -->
+<div id="app">
+    <!-- Input que recebe o valor do usuario -->
+    <input type="text" v-on:input="alterarTitulo">
+    <!-- Nó que será manipulado pelo Vue. (Necessário ser Double Mustache) -->
+    <p>{{ titulo }}</p>
+
+    <!-- Ao trabalhar com funções, tem que colocar os (parenteses). Senão a saída no Browser será uma String indicando que é um função: função () { [código nativo] } -->
+    <p>{{ saudacao() }}</p>
+</div>
+
+<!-- Script JS -->
+<script>
+    /* Objeto / Instancia Vue */
+    new Vue({
+        /* Elemento manipulável, necessáriamente deve ser 'el' */
+        el: '#app',
+        /* Dados que serão manipulados */
+        data: {
+            titulo: 'Usando Vue Js'
+        },
+        /* Ações que serão feitas */
+        methods: {
+            alterarTitulo: function(event){
+                this.titulo = event.target.value
+            },
+            saudacao: function(){
+                return 'Boa semana'
+            }
+        }
+    })
+</script>
