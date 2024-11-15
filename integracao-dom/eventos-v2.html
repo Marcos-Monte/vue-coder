@@ -1,0 +1,45 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+<!-- v-on:mousemove = Cria uma área que onde o mouse passa captura suas ações -->
+<div  v-on:mousemove="atualizarXY" id="app">
+
+    <p>{{ contador }}</p>
+
+    <div>
+        <button v-on:click="somar">Add 1</button>
+        <button v-on:click="sub">Sub 1</button>
+    </div>
+
+    <!-- Local que irá mostrar a latitude e longitude do 'mouse' -->
+    <p>Mouse: {{ x }} e {{ y }}</p>
+    
+</div>
+
+
+<script>
+
+    new Vue({
+        el: '#app',
+        data:{
+            contador: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+
+            somar(){             
+                this.contador++
+            },
+
+            sub(event){
+                this.contador--
+            },
+
+            atualizarXY(event){
+                this.y = event.clientX /* Atualiza o valor horizontal do mouse */
+                this.x = event.clientY /* Atualiza o valor vertical do mouse */
+            }
+        }
+    })
+
+</script>

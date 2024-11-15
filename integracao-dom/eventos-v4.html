@@ -1,0 +1,66 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+<!-- Estilização, meramente visual -->
+<style>
+    #nao{
+        background-color: #222;
+        height: 100px;
+    }
+
+    #app{
+        background-color: #777;
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+
+<!-- Área completa, onde o evento de mexer no mouse é monitorado -->
+<div  v-on:mousemove="atualizarXY" id="app" >
+
+    <p>Mouse: {{ x }} e {{ y }}</p>
+
+    <!-- mousemove recebe a função que evitar o monitoramento do mouse -->
+    <p v-on:mousemove="parar" id="nao">PARAR AQUI</p>
+
+    <p>AQUI SIM</p>
+
+    <!-- mousemove usa o método nativo que para o monitoramento -->
+    <p v-on:mousemove.stop="" id="nao">PARAR AQUI</p>
+
+    <!-- prevent = previne o comportamento padrão do evento, no caso evita que o link funcione -->
+    <a v-on:click.prevent='' href="http://google.com">Link não clicavel: Google</a>
+
+    <p>AQUI SIM</p>    
+
+    <a v-on:click='naoNavegar' href="http://google.com">Link não clicavel: Google</a>
+    
+</div>
+
+
+<script>
+
+    new Vue({
+        el: '#app',
+        data:{
+            contador: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+
+            atualizarXY(event){
+                this.y = event.clientX 
+                this.x = event.clientY 
+            },
+
+            parar(event){
+                event.stopPropagation()
+            },
+
+            naoNavegar(event){
+                event.preventDefault() /* Previne o comportamento padrão do evento click */
+            }
+        }
+    })
+
+</script>
