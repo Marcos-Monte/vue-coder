@@ -1,4 +1,4 @@
-const imagem = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRSMbg-3Cw94uFhtzxcblCpPFjxdavQIOV4A&s'
+const imagem = 'http://files.cod3r.com.br/curso-vue/vue.jpg'
 
 new Vue({
     el: '#desafio',
