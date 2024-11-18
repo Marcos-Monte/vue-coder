@@ -1,0 +1,26 @@
+<!-- Importando cdn do Vue na aplicação -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+<div id="desafio">
+    <!-- Exiba um alerto quando o botão for clicado -->
+    <div>
+        <h3>Exercício 1</h3>
+        <button  v-on:click="exibirAlerta">Exibir Alerta</button>
+    </div>
+
+    <!-- Escute o evento 'keydown' e armazene 'valor' na propriedade data (dica: event.target.value) -->
+    <div>
+        <h3>Exercício 2</h3>
+        <input type="text" v-on:keydown="armazenarValor"/>
+        <p>Valor: {{valor}}</p>
+    </div>
+
+    <!-- Ajuste o exemplo 2 para disparar o evento 'keydown' somente quando a tecla for Enter-->
+    <div>
+        <h3>Exercício 3</h3>
+        <input type="text" v-on:keydown.enter="armazenarValor">
+        <p>Valor: {{valor}}</p>
+    </div>
+</div>
+
+<script src="app.js"></script>
