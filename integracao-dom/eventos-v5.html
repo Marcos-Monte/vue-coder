@@ -1,0 +1,56 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+
+<div id="app"  v-on:mousemove="atualizarMousePosition">
+    <p>{{ contador }}</p>
+    <button v-on:click="somar(1)">Somar 1</button>
+    <button v-on:click="subtrair(1)">Subtrair 1</button>
+    <p>
+        Posicionamento do Mouse na tela : Longitude {{ x }} e  Latitude {{ y }}
+    </p>
+    <a v-bind:href="link" target="_blank">Google</a>
+
+    <hr>
+
+    <p>Exibir 'alerta' em qualquer tecla pressionada  </p>
+    <!-- keyup = Sempre que clicar e soltar na tela, vai chamar o método associado  (qualquer tecla)-->
+    <input type="text" v-on:keyup="exibirAlerta">
+
+    <p>Exibir 'alerta', apenas, quando o Enter for pressionado </p>
+    <!-- keyup = Sempre que clicar e soltar na tela, vai chamar o método associado  (Apenas o Enter)-->
+    <input type="text" v-on:keyup.enter="exibirAlerta">
+
+    <p>Exibir 'alerta', apenas, quando o Shift + Enter for pressionado </p>
+    <!-- keyup = Sempre que clicar e soltar na tela, vai chamar o método associado  (Shift + Enter, encadeados)-->
+    <input type="text" v-on:keyup.enter.shift="exibirAlerta">
+    
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            contador: 0,
+            x: 0,
+            y: 0,
+            link: 'https://www.google.com.br/?hl=pt-BR'
+        },
+        methods: {
+            somar(passo){
+                this.contador+= passo
+            },
+            subtrair(passo){
+                this.contador-= passo
+            },
+            atualizarMousePosition(event){
+                this.x= event.screenX;
+                this.y= event.screenY;
+            },
+            exibirAlerta(){
+                alert('Estou alertando')
+            },
+        }
+    })
+
+</script>
