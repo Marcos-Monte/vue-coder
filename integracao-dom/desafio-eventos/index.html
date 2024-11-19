@@ -8,19 +8,32 @@
         <button  v-on:click="exibirAlerta">Exibir Alerta</button>
     </div>
 
-    <!-- Escute o evento 'keydown' e armazene 'valor' na propriedade data (dica: event.target.value) -->
+    <!-- Escute o evento 'KEYUP' e armazene 'valor' na propriedade data (dica: event.target.value) -->
     <div>
-        <h3>Exercício 2</h3>
-        <input type="text" v-on:keydown="armazenarValor"/>
+        <h3>Exercício 2: Usando Método</h3>
+        <input type="text" v-on:keyup="armazenarValor"/>
+        <p>Valor: {{valor}}</p>
+    </div>
+
+    <div>
+        <h3>Exercício 2: Direto no Template</h3>
+        <input type="text" v-on:keyup="valor = $event.target.value"/>
         <p>Valor: {{valor}}</p>
     </div>
 
     <!-- Ajuste o exemplo 2 para disparar o evento 'keydown' somente quando a tecla for Enter-->
     <div>
-        <h3>Exercício 3</h3>
+        <h3>Exercício 3: Usando Método</h3>
         <input type="text" v-on:keydown.enter="armazenarValor">
         <p>Valor: {{valor}}</p>
     </div>
+
+    <div>
+        <h3>Exercício 3: Direto no Template</h3>
+        <input type="text" v-on:keydown.enter="valor = $event.target.value">
+        <p>Valor: {{valor}}</p>
+    </div>
+
 </div>
 
 <script src="app.js"></script>

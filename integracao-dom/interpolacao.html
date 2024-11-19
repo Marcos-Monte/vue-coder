@@ -1,0 +1,41 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+
+<div id="app">
+
+    <!-- A 'interpolação' é um código JS dentro do Template html -->
+    <!-- Pode receber expressões e códigos JS -->
+    <p>Simples: {{ contador }}</p>
+    <p>O número é par ou ímpar: {{ contador % 2 === 0? 'Par': 'Ímpar'}}</p>
+    <p>O número é ou não é Primo: {{ isPrimo(contador) }}</p>
+
+    <button v-on:click="somar(1)">Somar 1</button>
+    <button v-on:click="subtrair(1)">Subtrair 1</button>
+    
+</div>
+
+
+<script>
+
+   /*  let lista = []; */
+
+    new Vue({
+        el: '#app',
+        data: {
+            contador: 0,
+            /* lista: contador */
+        },
+        methods: {
+            somar(passo){
+                this.contador+= passo
+            },
+            subtrair(passo){
+                this.contador-= passo
+            },
+            isPrimo(num){
+                return num > 1 && [...Array(num).keys()].slice(2).every(i => num % i !== 0) ? "É primo" : "Não é primo";
+            }
+        }
+    })
+
+</script>

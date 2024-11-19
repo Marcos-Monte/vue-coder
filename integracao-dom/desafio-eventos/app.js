@@ -4,7 +4,7 @@ new Vue({
     el: '#desafio',
     /* Atributos da Instancia */
     data:{
-        valor: 'Vazio'
+        valor: ''
     },
     /* Métodos e Funções da Instancia */
     methods: {
