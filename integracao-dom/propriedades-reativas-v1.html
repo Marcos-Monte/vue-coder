@@ -1,0 +1,40 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    <div>
+        <h2>Exemplo 1: de Two Way Binding</h2>
+        <h3>v-bind + v-on</h3>
+        <p>{{exemplo1}}</p>
+        <!-- Sentido do 'v-bind' é a alteração da Vue Instance para o Template HTML -->
+        
+        <input 
+        type="text" 
+        v-bind:value="exemplo1" 
+        v-on:input="exemplo1 = $event.target.value" 
+        />
+    </div>
+
+    <div>
+        <h2>Exemplo 2: de Two Way Binding</h2>
+        <h3>V-model</h3>
+
+        <p>{{exemplo2}}</p>
+
+        <!-- Two Way Data Binding = Alteração simultanea no HTML e na Instancia VUE -->
+        <input 
+            type="text" 
+            v-model="exemplo2"
+        />
+    </div>
+    
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            exemplo1: 'V-bind + V-on',
+            exemplo2: 'V-model'
+        }
+    })
+</script>

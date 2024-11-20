@@ -1,0 +1,48 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+
+    <p>Contador: {{contador}} || {{contador2}}</p>
+
+    <button v-on:click="aumentar">Aumentar</button>
+    <button v-on:click="contador2++">Aumentar 2</button>
+    <button v-on:click="diminuir">Diminuir</button>
+
+    <p>Resultado: {{resultado}}</p>
+
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            contador: 0,
+            contador2: 0
+            /* Não pode existir, caso o método for 'resultado tb' */
+            /* resultado: '' */
+        },
+        computed: {
+            resultado: function(){
+                console.log('Método "Computed" resultado chamado ...')
+                return this.contador >= 5? 'Maior ou Igual a 5': 'Menor que 5'
+            },
+        },
+        methods:{
+            aumentar: function(){
+                this.contador++
+/*                 this.resultado = this.contador >= 5? 
+                    'Maior ou Igual a 5': 'Menor que 5' */
+            },
+            diminuir: function(){
+                this.contador--
+/*                 this.resultado = this.contador >= 5? 
+                    'Maior ou Igual a 5': 'Menor que 5' */
+            },
+/*             resultado: function(){
+                console.log('Método resultado chamado ...')
+                return this.contador >= 5? 'Maior ou Igual a 5': 'Menor que 5'
+            }, */
+        }
+    })
+</script>
