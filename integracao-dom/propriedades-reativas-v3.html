@@ -1,0 +1,47 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+
+    <p>Contador: {{contador}} </p>
+
+    <button v-on:click="aumentar">Aumentar</button>
+    <button v-on:click="diminuir">Diminuir</button>
+
+    <p>Resultado: {{resultado}}</p>
+
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            contador: 0,
+        },
+        computed: {
+            resultado: function(){
+                console.log('Método "Computed" resultado chamado ...')
+                return this.contador >= 5? 'Maior ou Igual a 5': 'Menor que 5'
+            },
+        },
+        watch: {
+            /* Informar qual a propriedade vamos monitorar: propriedade(valor novo, valor antigo){o que vai fazer} */
+            contador(novo, antigo){
+                console.log(`Valor novo: ${novo} | Valor antigo: ${antigo}`)
+                /* Lembrando que o essa função vai ser chamada 'quantas vezes' a propriedade for alterada*/
+                setTimeout(() => {
+                    console.log('Função Assincrona')
+                    this.contador = 0
+                }, 2000)
+            }
+        },
+        methods:{
+            aumentar: function(){
+                this.contador++
+            },
+            diminuir: function(){
+                this.contador--
+            },
+        }
+    })
+</script>
