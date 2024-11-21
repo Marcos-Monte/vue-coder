@@ -1,0 +1,60 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<!-- Estilos aplicados na página -->
+<style>
+    #app{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .demo{
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+
+    .c1 {
+        background-color: red;
+    }
+    .c1:hover{
+        background-color: black;
+        width: 50px;
+    }
+
+    .c2 {
+        background-color: green;
+    }
+
+    .c3 {
+        background-color: blue;
+    }
+</style>
+
+<div id="app">
+    <!-- Como aplicar as classes 'dinamicamente' usando o Vue -->
+    <div 
+        class="demo" 
+        
+        :class="{c1: aplicarC1}"
+
+        @click="aplicarC1 = !aplicarC1"
+
+    ></div>
+
+    <div 
+        class="demo"
+
+        :class="{c1: aplicarC1}"
+
+    ></div>
+    <div class="demo"></div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            aplicarC1: false
+        }
+    })
+</script>
