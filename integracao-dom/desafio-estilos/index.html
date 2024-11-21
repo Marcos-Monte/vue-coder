@@ -1,0 +1,65 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<link rel="stylesheet" href="styles.css">
+
+<div id="desafio">
+    <!-- 1- Iniciar a execução do efeito usando botão.
+
+    Efeito de alternancia das classes automaticamente, após o clique no botão
+
+    O efeito deve alternadamente trocar as classes 'destaque' e 'encolher' para cada chamada setInterval. Use a div abaixo com id 'efeito' para associar as classes CSS-->
+    <h2>#01</h2>
+    <button @click="iniciarEfeito">Iniciar Efeito</button>
+    <div id="efeito" :class="classe1"></div>
+
+    <!-- 2- Crie duas classes CSS e associe a div usando a sintaxe de array -->
+    <h2>#02</h2>
+
+    <!-- Outras sintaxes, para true: [{girar: girar}, {quadrado: quadrado}] -->
+    <!-- Outras sintaxes, para false: [{girar: !girar}, {quadrado: !quadrado}] -->
+
+    <div :class="['girar', 'quadrado']">Estou sem Classe CSS</div>
+
+    <!-- 3- Aplique na div abaixo a classe informada pelo usuario (crie classe CSS de exemplo)-->
+    <h2>#03</h2>
+
+    <!-- Atribuir em mão dupla a informação do input (v-model) -->
+    <div>
+        <label for="">Adicione estilos</label>
+        <input type="text" v-model="classe3">
+        <div :class="classe3"></div>
+    </div>
+
+    <!-- 4- Aplique na div abaixo a classe informada pelo usuario e outra classe usando o valor 'true/false' (crie classes CSS de exemplo) -->
+    <h2>#04</h2>
+    <div>
+    
+        <label for="">Classe</label>
+        <input type="text" v-model="classe4">
+
+        <label for="">Perigo (true ou false)</label>
+        <input type="text" @input="setPerigo">
+        <div :class="[classe4, {perigo}]"></div>
+    </div>
+
+    <!-- 5- Repita o exercicio 3, mas utilizando estilos ao invés de classes CSS. Associe os estilos a div abaixo-->
+    <h2>#05</h2>
+    <div>
+        <label for="">Indique uma cor</label>
+        <input type="text" v-model="cor5">
+        <div :style="[estilo5,{backgroundColor: cor5}]"></div>
+    </div>
+
+    <!-- 6- Crie uma barra de progresso simples com  setInterval e binding de estolo-->
+    <h2>#06</h2>
+    <div>
+        <button @click="iniciarProgresso">Iniciar</button>
+        <p>{{ width }}</p>
+        <div class="barra-progresso">
+            <div class="progresso" :style="{width}"></div>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+
