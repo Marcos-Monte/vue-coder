@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    
+    <p v-if="logado">Usuário Logado: {{ nome }}</p> <!-- Condicional 'inicial' -->
+    <p v-else-if="anonimo">Navegando como Anônimo</p> <!-- Condicional 'intermediária' -->
+    <p v-else>Nenhum Usuário Logado</p> <!-- Condicional 'final' -->
+
+    <!-- Baseado no click do botão que estabelecemos as condicionais -->
+    <button @click="logado = !logado">{{ logado? 'Sair': 'Entrar' }}</button>
+
+    <!-- Input do tipo 'checkbox'. Se clicado = true, senão = false. Atribui valor Boolean a variável na Vue Instance 'anonimo' -->
+    <input type="checkbox" v-model="anonimo">
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            nome: 'Marcos Monte',
+            logado: false,
+            anonimo: true
+        }
+    })
+</script>

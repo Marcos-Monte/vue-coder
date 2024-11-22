@@ -1,0 +1,22 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    <!-- Não quero que as duas opções sejam renderizadas ao mesmo tempo. Ou mostro o Usuário que está logado, ou nenhum está logado -->
+    <p v-if="logado">Usuário Logado: {{ nome }}</p> <!-- Condicional 'V-IF' -->
+    <p v-else>Nenhum Usuário Logado</p> <!-- Condicional 'V-ELSE', só funciona se estiver logo após o 'v-if' -->
+
+    <button @click="logado = !logado">{{ logado? 'Sair': 'Entrar' }}</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            /* Variável que vai aparecer apenas se a condição for alcançada */
+            nome: 'Marcos Monte',
+            /* Valor inicial. Usuário 'não' logado */
+            logado: false
+        }
+    })
+</script>
