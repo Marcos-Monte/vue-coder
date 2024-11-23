@@ -1,0 +1,104 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="desafio">
+    <!-- 1- Ligue o botão para alternar a exibição dos dois paragrafos. Use ambos 'v-if' e 'v-show' e inspecione os elementos para ver a diferença -->
+
+    <h2>#01</h2>
+    <div>
+        <!-- Click do botão muda o valor 'booleano' do atributo 'status' -->
+        <button @click="status = !status">Alternar</button>
+
+        <!-- Usando viretivas condicionais -->
+        <p v-if="status">Você quer me ver ...</p>
+        <p v-else>...ou eu</p>
+
+        <!-- Usando diretiva 'v-show'. Com referencia a valor Boolean -->
+        <p v-show="status">Você quer me ver ...</p>
+        <p v-show="!status">...ou eu</p>
+    </div>
+
+    <hr>
+    <!-- 2- Exiba em uma 'ul' um array de elementos da sua escolha. Imprima também o indice de cada elemento. -->
+    <h2>#02</h2>
+    <ul type="none">
+        <h5>Livro</h5>
+        <li v-for="(info, chave, i) in livro">
+            {{i}}: {{info}}
+        </li>
+    </ul>
+
+    <ul type="none">
+        <h5>Aluno</h5>
+        <li v-for="(info, chave, i) in aluno">
+            {{i}}: {{info}}
+        </li>
+    </ul>
+
+    <hr>
+
+    <!-- 3- Imprimir todos os pares de valor-chave do objeto 
+    {
+        titulo: 'O senhor dos Anéis',
+        autor: 'J.R.R. Tolkiens',
+        volume: '3',
+    }
+    Imprima também o índice de cada item.
+    -->
+    <h2>#03</h2>
+    <ul type="none">
+        <h5>Livro:</h5>
+        <li v-for="(valor, chave, i) in livro">
+            ID: {{i}}, {{chave}}: {{valor}}
+        </li>
+    </ul>
+
+    <hr>
+
+    <!-- 4- Imprima o seguinte objeto (somente os valores) e tamém crie um Loop aninhado para o array:
+    {
+        id: 10,
+        nome: 'Marcos',
+        notas: [7.5, 8.9, 2.5, 6.0]
+    }
+
+    (dica: use 'v-for' e 'v-if' na resolução)
+    -->
+
+    <h2>#04</h2>
+
+    <ul type="none">
+
+        <!-- Iterar a Lista -->
+        <li v-for="info in aluno">
+
+            <!-- Se o elemento da Lista NÃO for um Array, pode renderizar -->
+            <template v-if="!Array.isArray(info)">
+                {{info }}
+            </template>
+
+            <!-- Se o elemento FOR um Array. Criar uma lista com os elementos desse Array -->
+            <template v-else>
+                Notas:
+                <ul type="circle">
+                    <!-- Percorrer a lista desse Array Interno -->
+                    <li v-for="(nota, i) in info">
+                        {{ i + 1 }}º Bimestre: {{ nota }}
+                    </li>
+
+                    <!-- Calcular a Média dos valores do Array Interno -->
+                    <li>
+                        Média: {{ calcularMedia(aluno.notas) }}
+                    </li>
+
+                </ul>
+
+            </template>
+
+        </li>
+
+    </ul>
+</div>
+
+
+
+<script src="app.js"></script>

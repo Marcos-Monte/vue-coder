@@ -1,0 +1,35 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+
+<div id="app">
+
+    <ul type="none">
+        <h4>Lista de Cores</h4>
+
+        <!--  Laço 'for' dentro da diretiva 'v-for'. Logica do for no 'valor' da diretiva-->
+        <li 
+            v-for="(cor, index) in cores"
+            :key="index" 
+        >
+            {{ index }}) {{ cor }}
+        </li>
+    </ul>
+
+    <hr>
+    <!-- Input com 'v-model', atualiza o template HTML e a Instancia Vue ao mesmo tempo -->
+    <input type="text" v-model="novo">
+    <!-- Evento de Click, adiciona o 'value' do Input, dentro do Array de Cores -->
+    <button @click="cores.push(novo)">Add</button>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+            novo: ''
+        }
+    })
+</script>

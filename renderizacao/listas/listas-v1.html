@@ -1,0 +1,41 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+
+<div id="app">
+
+    <ul type="circle">
+        <h4>Lista de Cores</h4>
+
+        <!--  Laço 'for' dentro da diretiva 'v-for'. Logica do for no 'valor' da diretiva-->
+        <li v-for="cor in cores">
+            {{ cor }}
+        </li>
+    </ul>
+
+    <ul type="none">
+        <h4>Informações das Listas de Pessoas</h4>
+
+        <li v-for="pessoa in pessoas">
+            <!--  Laço 'for' dentro da diretiva 'v-for'. Logica do for no 'valor' da diretiva-->
+            <!-- Acessando  propriedades do Objeto 'pessoa', dentro do Array 'pessoas'-->
+            {{ pessoa.nome }}: tem {{ pessoa.idade }} anos e pesa {{ pessoa.peso }}Kg.
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+            pessoas: [
+                { nome: 'Marcos', idade: 36, peso: 130 },
+                { nome: 'Mariá', idade: 27, peso: 50 },
+                { nome: 'Andrew', idade: 26, peso: 160 },
+                { nome: 'Samurai Jack', idade: 58, peso: 76 },
+            ]
+        }
+    })
+</script>

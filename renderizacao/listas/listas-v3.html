@@ -1,0 +1,34 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+
+<div id="app">
+
+    <!-- Lembrando que a tag 'template' não aparece na inspeção do DOM no Navegador -->
+    <template v-for="(cor, indice) in cores" style="display: flex; align-items: center;">
+
+        <div style="display: flex; align-items: center;">
+
+            <span style="margin-right: 10px;">{{ indice }}</span>
+            <h5>{{ cor }}</h5>
+
+        </div>
+
+    </template>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+            pessoas: [
+                { nome: 'Marcos', idade: 36, peso: 130 },
+                { nome: 'Mariá', idade: 27, peso: 50 },
+                { nome: 'Andrew', idade: 26, peso: 160 },
+                { nome: 'Samurai Jack', idade: 58, peso: 76 },
+            ]
+        }
+    })
+</script>
