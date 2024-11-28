@@ -1,80 +1,84 @@
-# Visão Geral do Curso
+# Estudos em Vue.js
 
-## Interagindo com a DOM (Templates)
+Este repositório é dedicado aos meus estudos iniciais em Vue.js. Aqui registro minha evolução, desde os conceitos básicos até exemplos práticos.  
 
-#### Todo o 'core' do Vue será abordado nesse capítulo
+O objetivo é aprender e documentar o progresso, tornando o aprendizado útil também para outros iniciantes. 🚀  
 
+---
+
+## Visão Geral do Curso
+
+### Interagindo com a DOM (Templates)
+
+Todo o **core** do Vue será abordado neste capítulo:
 - Manipulação do template (HTML)
 - Eventos
 - Propriedades Reativas
 - Estilos
 - Adicionar classes nos elementos HTML
 
-## Entendendo a instância VueJs
+### Entendendo a Instância Vue.js
 
-- Aprofuncar nos conceitos de intâncias usando VueJs
+Aprofundamento nos conceitos de instâncias usando Vue.js.
 
-## Vue CLI
+### Vue CLI
 
-Inicialmente será feita a importação direta do arquivo JS. Aos poucos evoluímos para o uso do Vue Client
+Inicialmente será feita a importação direta do arquivo JS, evoluindo para o uso do Vue CLI.
 
-#### O que é o Vue Client?
-- Ferramenta de linha de comando onde se cria o projeto e faz toda a configuração.
+#### O que é o Vue CLI?
+- Ferramenta de linha de comando que cria e configura projetos Vue.js.
 
-## Componentes
+### Componentes
 
-Conceito muito importante. Todos os principais frameworks JavaScript utilizam 'componentes'. 
-- Passo essencial para profissionalização do código
+Conceito essencial para todos os principais frameworks JavaScript:
+- Fundamental para a profissionalização do código.
 
-## Formulários
+### Formulários
 
-Como o VueJs trabalha com formulários e Validações
+- Trabalhar com formulários e validações no Vue.js.
 
-## Diretivas, Filtros e Mixins
+### Diretivas, Filtros e Mixins
 
-- Diretivas em Vue.js são atributos especiais que aplicam comportamento reativo aos elementos DOM, como v-if e v-for.
-- Filtros são funções para formatar valores antes de exibi-los
-- Mixins são objetos que permitem compartilhar lógica entre componentes.
+- **Diretivas**: Atributos especiais como `v-if` e `v-for` que aplicam comportamento reativo.
+- **Filtros**: Formatam valores antes da exibição.
+- **Mixins**: Permitem compartilhar lógica entre componentes.
 
-## Animações e Transições
+### Animações e Transições
 
-Em Vue.js, transições são usadas para adicionar efeitos de entrada e saída a elementos, controladas por diretivas como v-if e v-show. Animações permitem criar efeitos mais complexos, utilizando CSS ou JavaScript, com controle sobre o tempo e os estilos durante a transição dos elementos.
+- **Transições**: Adicionam efeitos de entrada e saída a elementos com diretivas como `v-if` e `v-show`.
+- **Animações**: Criam efeitos mais complexos com CSS ou JavaScript.
 
-## Trabalhando com HTTP
+### Trabalhando com HTTP
 
-- Para requisições Ajax, usamos a ferramenta 'axios'
-- Axios é baseada em 'Promises'
+- Requisições Ajax utilizando a biblioteca **Axios**.
+- Axios é baseada em **Promises**.
 
-## Aplicações SPA - Single Page Applications
+### Aplicações SPA - Single Page Applications
 
-### Roteamento
+#### Roteamento
+- Navegação entre múltiplas páginas com o **vue-router**.
 
-Navegação entre multiplas paginas usando o 'vue-router'
+#### Gerenciamento de Estado (Vuex)
+- Gerencia o estado de forma eficiente, ideal para aplicações maiores.
 
-### Gerenciamento do Estado (Vuex)
+### Deploying
 
-Quando se tem um componente:
-- O componente tem um estado
-- Muitas vezes a comunicação é direta
-Nem sempre em uma aplicação grande é feito de forma tão facil
-Vuex vai gerenciar o estado de forma mais simples
+- Implantação da aplicação em produção, utilizando ferramentas na nuvem.
 
-## Deploying 
+### Exercícios
 
-Implantação da aplicação em produção.
-Será feito em alguma ferramenta de núvem.
+- Aulas com exercícios e desafios práticos.
 
-## Exercícios
+### Projetos
 
-Durante as aulas terá exercídios e desafios 
+Serão desenvolvidos 5 projetos práticos:
+1. **Projeto 1**: Interação com Templates.  
+2. **Projeto 2**: Trabalhando com Componentes.  
+3. **Projeto 3**: Aplicando Animações.  
+4. **Projeto 4**: Rotas e Gerenciamento de Estado.  
+5. **Projeto Final**: Aplicação voltada ao mercado.
 
-## Projetos
+---
 
-Serão 5 projetos, cada um trabalhando um conteúdo:
-
-- Projeto 1: Básico, Interação com Template 
-- Projeto 2: Componentes 
-- Projeto 3: Animações
-- Projeto 4: Rotas, Gerenciamento de Estado
-- Projeto 5: Projeto Final - (Aplicação voltada ao mercado)
+Acompanhe minha evolução e sinta-se à vontade para contribuir! 🚀
 
