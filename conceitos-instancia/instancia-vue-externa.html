@@ -1,0 +1,52 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app1">
+
+    {{teste1}} 
+
+    <button @click="alterar">Alterar</button>
+    
+</div>
+
+<div id="app2">
+
+    {{teste2}} 
+
+    <button @click="alterar">Alterar</button>
+    
+</div>
+
+<script>
+    const vm1 = new Vue({
+        el: '#app1',
+
+        data: {
+            teste1: 'Template 1 '
+        },
+
+        methods: {
+            alterar(){
+                /* Acessando os dados da 'vm2' de fora dela */
+                vm2.teste2 += ' 1'
+            }
+        }
+    })
+
+    /* --------------------------------------------------- */
+
+    const vm2 = new Vue({
+        el: '#app2',
+
+        data: {
+            teste2: 'Template 2 '
+        },
+
+        methods: {
+            alterar(){
+                /* Acessando os dados da 'vm1' de fora dela */
+                vm1.teste1 += ' 2'
+            }
+        }
+    })
+</script>

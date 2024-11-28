@@ -1,0 +1,81 @@
+<meta charset="utf-8" />
+
+
+<div id="app">
+
+    Nome: {{ nome }} || Sobrenome: {{ sobrenome }} || Idade: {{ 35 + 1 }} anos
+
+
+</div>
+
+<script>
+    /* Função Construtora que recebe parametros */
+    function MeuVue(params) {
+        /* Padrão de 'dólar' usando por que muitas funções do Vue usam */
+        this.$el =
+            document.querySelector(
+                params.el /* Armazena o elemento DOM dentro de '$el' */
+            );
+        /* Objeto passado a partir de 'params'  */
+        this.$data = params.data;
+
+        /* Percorrendo o objeto, pegando cada atributo de dentro dele */
+        for (let atributo in this.$data) {
+
+            /* Para cada atributo = criar uma propriedade, com: contexto, atributo, {objeto} */
+            Object.defineProperty(this, atributo, {
+
+                /* Método que serve de Proxy = A partir dessa propriedade, retorna outra propriedade.  */
+                get: () => {
+
+                    return this.$data[atributo]
+
+                },
+
+                /* Recebe um valor, que altera o valor de 'atributo' */
+                set: (value) => {
+
+                    this.$data[atributo] = value
+
+                }
+
+            })
+        }
+
+        /* Para interpolar, devemos usar 'regex' */
+        const regex = /\{\{([\s\w+]*)\}\}/g
+        this.$el.innerHTML = this.$el.innerHTML.replace(regex, (match, $1) => {
+            const value = this[$1.trim()]
+            return value ? value : eval($1)
+        })
+
+    }
+
+
+    /* Instancia MeuVue */
+    const vm = new MeuVue({
+        /* Armazena o Template HTML */
+        el: '#app',
+        /* Params = Atributos da Instancia */
+        data: {
+            nome: 'Marcos',
+            sobrenome: 'Monte'
+        }
+    })
+
+    /* Getters chamado no momento em que usamos essa linha de codigo */
+    console.log(vm.nome);
+    console.log(vm.$data.sobrenome);
+
+    /* Setters, alterando valores  */
+    vm.nome = 'Mariá';
+    console.log(vm.nome)
+    console.log(vm.$data.sobrenome);
+
+    /* Assim como no Vue, não é aceito colocar propriedades que não estão na sua Instancia */
+    vm.idade = 36;
+    console.log(vm.$data.idade) /* Resultado: undefined */
+    console.log(vm.idade) /* Resultado: undefined */
+
+
+</script>
