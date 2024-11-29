@@ -1,0 +1,55 @@
+<!-- Exemplo de Componentização -->
+
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue@2"></script>
+
+<!-- Template HTML -->
+<main id="app">
+    <!-- Componente Personalizado, importado ao Template App -->
+    <comp></comp>
+    <comp></comp>
+    <comp></comp>
+</main>
+
+
+<script>
+    /* Criando um Componente Vue */
+    Vue.component('comp', {
+        /* Estrutura HTML do componente */
+        template: `
+            <div>
+                <h1>{{ aula }}</h1>
+                <h2>{{ modulo }}</h2>
+                <button @click="alterarAula">Alterar Aula</button>
+                <button @click="alterarModulo">Alterar Módulo</button>
+            </div>
+        `,
+        
+        /* Os dados agora são chamados por uma 'função' que retorna um objeto literal */
+        data: function (){
+            return {
+                aula: 'Aula: Montando Instancia Vue',
+                modulo: "Módulo: Instancia Vue"
+            }
+        },
+
+        methods : {
+            alterarAula(){
+                this.aula += '@';
+            },
+
+            alterarModulo(){
+                this.modulo += '@';
+            }
+        }
+    })
+
+    /* Criando a Instancia Vue, baseada no template 'app'. Podemos colocar quantos componentes quisermos dentro desse template */
+    const vm = new Vue({
+
+        el: '#app',
+
+        
+    })
+
+</script>
