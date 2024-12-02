@@ -1,0 +1,54 @@
+<meta charset="utf-8"/>
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    <h1>{{ titulo }}</h1>
+    <button @click="titulo += '#'">Alterar Título</button>
+    <!-- $destroy()  = Função antiva do VueJs -->
+    <button @click="$destroy()">Destruir</button>
+</div>
+
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            titulo: 'Ciclo de Vida'
+        },
+        /* Função criadas antes da Criação da Virtual Dom */
+        beforeCreate(){
+            console.log('Antes de Criar')
+        },
+        /* Função criadas Depois da Criação da Virtual Dom */
+        created(){
+            console.log('Criado')
+        },
+
+        /* Função criadas antes da Montagem da Virtual Dom */
+        beforeMount(){
+            console.log('Antes de montar (DOM)')
+        },
+        /* Função criadas Depois da Montagem da Virtual Dom */
+        mounted(){
+            console.log('DOM montada')
+        },
+
+        /* Função criadas antes de atualização Virtual da DOM */
+        beforeUpdate(){
+            console.log('Antes de Atualizar')
+        },
+        /* Função criadas Depois de atualização Virtual da DOM */
+        updated(){
+            console.log('Atualizado')
+        },
+
+        /* Função criadas antes da destruição da Virgual Dom  */
+        beforeDestroy(){
+            console.log('Antes de Destruir')
+        },
+        /* Função criadas Depois da destruição da Virgual Dom  */
+        destroyed(){
+            console.log('Destruido')
+        }
+
+    })
+</script>
