@@ -1,0 +1,40 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    <!-- Importando o componente 'n vezes' dentro da aplicação. Nome do Componente é 'contador' -->
+    <contador></contador>
+    <contador></contador>
+    <contador></contador>
+
+</div>
+
+<script>
+    /* Criando um componente Vue (Forma Global). Recebe: Nome-Componente, Objeto {Template, Dados} */
+    Vue.component('contador', {
+
+        /* O template precisa estar dentro de uma tag envolvente. Cada componente mostra apenas um elemento */
+        template: `
+            <div>
+                <span>{{ contador }}</span>
+                <button @click="contador++">Add</button>
+                <button @click="contador--">Sub</button>
+            </div>
+        `,
+        
+        /* Dados retornam uma função com um Objeto de Dados. Assim todo componente tem seus proprios dados individuais. */
+        data: function () {
+            return {
+                contador: 0
+            }
+        }
+
+    })
+
+    /* Vue Instance, monitorando o Elemento 'app' */
+    new Vue({
+
+        el: '#app',
+
+    })
+</script>

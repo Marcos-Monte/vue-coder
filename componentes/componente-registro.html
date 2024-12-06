@@ -1,0 +1,84 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app1">
+    <h2>Global</h2>
+    <!-- Não há registro de componentes locais. Nessa Instancia apenas Componentes Globais -->
+    <global></global>
+    <global></global>
+    <global></global>
+
+</div>
+
+<hr>
+
+<div id="app2">
+
+    <h2>Global + Local</h2>
+
+    <Local></Local>
+    <Local></Local>
+    <!-- Componente Global pode ser importado a qualquer Vue Instance -->
+    <global></global>
+
+</div>
+
+<script>
+
+    /* Registro Global */
+    Vue.component('global', {
+
+        template: `
+            <div>
+                <span>{{ contador }}</span>
+                <button @click="contador++">Add</button>
+                <button @click="contador--">Sub</button>
+            </div>
+        `,
+
+        data: function () {
+            return {
+                contador: 0
+            }
+        }
+
+    })
+
+    /* Objeto que guarda as informações de um Componente */
+    const contadorLocal = {
+        template: `
+            <div>
+                <span>{{ contador }}</span>
+                <button @click="contador++">Add</button>
+                <button @click="contador--">Sub</button>
+            </div>
+        `,
+
+        data: function () {
+            return {
+                contador: 0
+            }
+        }
+    }
+
+    /* Aplicação não registrou nenhum componente proprio, irá usar o componente GLOBAL */
+    new Vue({
+
+        el: '#app1',
+
+    })
+
+    
+    new Vue({
+
+        el: '#app2',
+
+        /* Registrando o componente Local. A partir daqui o 'contadorLocal' é um componente */
+        components: {
+
+            Local: contadorLocal,
+
+        }
+
+    })
+</script>
