@@ -6,6 +6,7 @@
         <p>Esse é um componente muito legal!</p>
 
         <p>Nome é <strong>{{ nome }}</strong></p>
+        <p>Idade é <strong>{{ idade }}</strong></p>
 
         <!-- Click no Botão modifica o valor do dado 'nome' (usando V-On) -->
         <button @click="alterarNome">Alterar Nome</button>
@@ -18,10 +19,20 @@
             <app-usuario-info 
                 :usuarioNome="nome"
                 @nomeMudou="nome = $event.novoNome"
+                
+                :usuarioIdade="idade"
+                
                 :reiniciarCallback="reiniciarNome"
             /> 
             
-            <app-usuario-editar />
+            <!-- Componente Pai, passa valor de 'usuarioIdade' para os Filhos -->
+            <!-- Componente Pai, recebe Evento e devolve valor 'idade' alterado para os Filhos -->
+            <app-usuario-editar 
+                :usuarioIdade="idade"
+            
+            />
+            <!-- @alterouIdade="idade = $event.novaIdade * 2" -->
+            
         </div>
     </div>
 </template>
@@ -29,8 +40,8 @@
 <!-- Instancia Vue de Usuario -->
 <script>
     /* Import dos Componentes (Localmente) */
-    import AppUsuarioInfo from './UsuarioInfo'
-    import AppUsuarioEditar from './UsuarioEditar'
+    import AppUsuarioEditar from './UsuarioEditar';
+import AppUsuarioInfo from './UsuarioInfo';
     
     export default {
         /* Registro dos Componentes */
@@ -39,14 +50,21 @@
         /* Função que armazena os dados do Componente. Esses dados vão ser passados para o componente filho */
         data(){
             return {
-                nome: 'Marcos'
+                nome: 'Marcos',
+                idade: 36
             }
         },
 
         /* Método que alterna entre um e outro nome. Evento de Click no botão */
         methods: {
             alterarNome(){
-                this.nome === 'Marcos'? this.nome = 'Mariá': this.nome = 'Marcos'
+                if( this.nome === 'Marcos'){
+                    this.nome = 'Mariá'
+                    this.idade = 27
+                } else {
+                    this.nome = 'Marcos'
+                    this.idade = 36
+                }
             },
 
             /* Comunicação Indireta: Função Callback */

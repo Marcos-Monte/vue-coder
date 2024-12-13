@@ -5,15 +5,22 @@
         <p>Vários detalhes...</p>
         <!-- Recebe informação do Nome do Usuário (modificada pelo método) -->
         <span>Nome de Usuário: <strong>{{ interverNome() }}</strong></span>
+        <br>
+        <span>Idade do Usuário: <strong>{{ usuarioIdade }}</strong></span>
+        <br>
 
-        <button @click="reiniciarNome">Reiniciar Nome</button> <!-- Evento personalizado -->
+        <button @click="reiniciarNome">Evento Personalizado</button> <!-- Evento personalizado -->
 
-        <button @click="reiniciarCallback">Reiniciar Nome (Callback)</button> <!-- Função Callback -->
+        <button @click="reiniciarCallback">Função Callback</button> <!-- Função Callback -->
     </div>
 </template>
 
 <!-- Instancia Vue de UsuarioIndo -->
 <script>
+
+    /* Importando a Instancia de 'barramento' */
+    import barramento from '@/barramento';
+
     export default {
         /* Definir as propriedades do Componente */
             // Componente recebe uma propriedade chamada 'usuarioNome'
@@ -27,6 +34,10 @@
             /* Registrando Função recebida pelo Componente (Callback) */
             'reiniciarCallback': {
                 type: Function,
+            },
+
+            'usuarioIdade': {
+                type: Number,
             }
         },
 
@@ -44,6 +55,14 @@
                     novoNome: this.usuarioNome
                 })
             }
+        },
+
+        /* Método de Ciclo de vida: Create */
+        created(){
+            /* Quero escutar o evento da Instancia 'barramento' */
+            barramento.quandoIdadeMudar(idade => {
+                this.usuarioIdade = idade.novaIdade;
+            })
         }
     }
 </script>
