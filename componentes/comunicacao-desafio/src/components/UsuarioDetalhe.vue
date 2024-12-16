@@ -26,7 +26,7 @@
         created(){
 
             /* Armazena o resoltado emitido pelo evento, na variável local */
-            barramento.onUsuarioSelecionado(usuario => {
+            barramento.getUsuarioSelecionado(usuario => {
                 this.usuarioLocal = usuario
             })
 
