@@ -13,19 +13,19 @@
 				<div class="cabecalho">Formulário</div>
 
 				<Rotulo nome="E-mail">
-					<input type="text" v-model="email" required /> <!-- V-model faz o Two-way data binding -->
+					<input type="text" v-model.lazy.trim="usuario.email" required /> <!-- V-model faz o Two-way data binding -->
 				</Rotulo>
 
 				<Rotulo nome="Senha">
-					<input type="password" v-model="senha" required /> <!-- V-model faz o Two-way data binding -->
+					<input type="password" v-model="usuario.senha" required /> <!-- V-model faz o Two-way data binding -->
 				</Rotulo>
 
 				<Rotulo nome="Idade">
-					<input type="number" v-model="idade" required /> <!-- V-model faz o Two-way data binding -->
+					<input type="number" v-model.number="usuario.idade" required /> <!-- V-model faz o Two-way data binding -->
 				</Rotulo>
 
 				<Rotulo nome="Mensagem">
-					<textarea name="" cols="30" rows="5" v-model="msg" required></textarea> <!-- V-model faz o Two-way data binding -->
+					<textarea name="" cols="30" rows="5" v-model="usuario.msg" required></textarea> <!-- V-model faz o Two-way data binding -->
 				</Rotulo>
 
 				<Rotulo nome="Características do Problema">
@@ -60,19 +60,19 @@
 				<div class="cabecalho">Resultado</div>
 
 				<Rotulo nome="E-mail">
-					<span>{{ email }}</span>
+					<span>{{ usuario.email }}</span>
 				</Rotulo>
 
 				<Rotulo nome="Senha">
-					<span>{{ senha }}</span>
+					<span>{{ usuario.senha }}</span>
 				</Rotulo>
 
 				<Rotulo nome="Idade">
-					<span>{{ idade }}</span>
+					<span>{{ usuario.idade }} anos - tipo do dado {{ tipoIdade }}</span>
 				</Rotulo>
 
 				<Rotulo nome="Mensagem">
-					<span>{{ msg }}</span>
+					<span>{{ usuario.msg }}</span>
 				</Rotulo>
 
 				<Rotulo nome="Marque as Opções">
@@ -110,12 +110,23 @@ import Rotulo from './components/Rotulo.vue';
 		/* Registrando componentes */
 		components: { Rotulo, Escolha },
 
+		// Método Computado, Atualiza sempre que houver modificações.
+		computed: {
+			// Renderiza o 'tipo' de dado da propriedade de 'usuario.idade'
+			tipoIdade(){
+				return typeof this.usuario.idade
+			}
+		},
+
 		data(){
 			return {
-				email: '',
-				senha: '',
-				idade: '',
-				msg: '',
+				// Objeto com cada uma das propriedades
+				usuario: {
+					email: '',
+					senha: '',
+					idade: '', // Podemos inicializar o objeto com um valor default
+					msg: '',
+				}
 			}
 		}
 	}
