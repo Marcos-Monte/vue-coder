@@ -8,12 +8,13 @@
 		<div class="conteudo">
 
 			<!-- Painel de inserção de dados pelo Usuario (form)-->
-			<form class="painel">
+			<!-- Se a variável 'enviado' não for true -->
+			<form class="painel" v-if="!enviado">
 
 				<div class="cabecalho">Formulário</div>
 
 				<Rotulo nome="E-mail">
-					<input type="text" v-model.lazy.trim="usuario.email" required /> <!-- V-model faz o Two-way data binding -->
+					<input type="email" v-model.lazy.trim="usuario.email" required /> <!-- V-model faz o Two-way data binding -->
 				</Rotulo>
 
 				<Rotulo nome="Senha">
@@ -29,33 +30,69 @@
 				</Rotulo>
 
 				<Rotulo nome="Características do Problema">
-					<span class="mr-4"><input type="checkbox" value="reproduzivel"> Reproduzível</span>
-					<span><input type="checkbox" value="intermitente"> Intermitente</span>
+					<span class="mr-4">
+						<!-- Ao clicar no 'ckeckbox', o 'value' será adicionado no 'array = usuario.caracteristicas'  -->
+						<input type="checkbox" value="reproduzivel" v-model="usuario.caracteristicas" /> Reproduzível
+					</span>
+					<span>
+						<!-- Ao clicar no 'ckeckbox', o 'value' será adicionado no 'array = usuario.caracteristicas'  -->
+						<input type="checkbox" value="intermitente" v-model="usuario.caracteristicas" /> Intermitente
+					</span>
 				</Rotulo>
 
 				<Rotulo nome="Qual produto?">
-					<span class="mr-4"><input type="radio"> Web</span>
-					<span class="mr-4"><input type="radio"> Mobile</span>
-					<span><input type="radio"> Outro</span>
+					<!-- No uso de Radio, normalmente, pode ser selecionado apenas um valor  -->
+					<!-- O que garante isso é o local de armazenamento em comum: v-model="usuario.produto" -->
+					<span class="mr-4">
+						<!-- Ao clicar no 'radio', o 'value' será adicionado em  'usuario.produto'  -->
+						<input type="radio" value="web" v-model="usuario.produto" /> Web
+					</span>
+
+					<span class="mr-4">
+						<!-- Ao clicar no 'radio', o 'value' será adicionado em  'usuario.produto'  -->
+						<input type="radio" value="mobile" v-model="usuario.produto" /> Mobile
+					</span>
+
+					<span>
+						<!-- Ao clicar no 'radio', o 'value' será adicionado em  'usuario.produto'  -->
+						<input type="radio" value="outro" v-model="usuario.produto" /> Outro
+					</span>
+
 				</Rotulo>
 
 				<Rotulo nome="Prioridade">
-					<select name="" id="">
-						<option></option>
+					<!--  -->
+					<select v-model="usuario.prioridade">
+						<!-- Opções são renderizadas a partir de uma lista de Objetos em 'data' -->
+						<!-- A seleção de uma opção popula 'value' com o objeto, que será armazenado no local indicado por 'v-model' -->
+						<option 
+							v-for="prioridade in prioridades"
+							:key="prioridade.codigo"
+							:value="prioridade"
+						>
+							{{prioridade.codigo}} - {{ prioridade.nome }}
+						</option>
 					</select>
 				</Rotulo>
 
 				<Rotulo nome="Primeira Reclamação?">
-					<Escolha />
+					<!-- Componente Personalizado.
+					Lembrete: Usamos o 'v-model' e isso obriga a ter um INPUT. Esse evento será emitido no componente Escolha -->
+					<Escolha 
+						v-model="usuario.escolha"
+						:propsLigado="usuario.escolha"
+					/>
 				</Rotulo>
 
 				<hr>
 				
-				<button>Enviar</button>
+				<!-- Botão ao ser clicado vai chamar a função  'enviar'-->
+				<button @click.prevent="enviar()">Enviar</button>
 			</form>
 
 			<!-- Painel de Visualização dos dados armazenados. -->
-			<div class="painel">
+			<!-- Se a variável 'enviado' for true -->
+			<div class="painel" v-else>
 
 				<div class="cabecalho">Resultado</div>
 
@@ -72,23 +109,35 @@
 				</Rotulo>
 
 				<Rotulo nome="Mensagem">
-					<span>{{ usuario.msg }}</span>
+					<!-- <span style="white-space: pre;">{{ usuario.msg }}</span> -->
+					<span><pre>{{ usuario.msg }}</pre></span>
 				</Rotulo>
 
 				<Rotulo nome="Marque as Opções">
-					<span>???</span>
+						<!-- Lista não ordenada que: Cada item irá imprimir um valor de dentro do array 'usuario.caracteristicas' -->
+						<ul type="none">
+							<li 
+								v-for="(caracteristica, index) in usuario.caracteristicas"
+								:key="index"
+							>
+								{{ caracteristica.toUpperCase() }}
+							</li>
+						</ul>
+					
 				</Rotulo>
 
 				<Rotulo nome="Qual produto?">
-					<span>???</span>
+					<span>{{ usuario.produto.toUpperCase() }}</span>
 				</Rotulo>
 
 				<Rotulo nome="Prioridade">
-					<span>???</span>
+					<!-- Resultado renderizado -->
+					<span>{{usuario.prioridade.codigo}} - {{ usuario.prioridade.nome }}</span>
 				</Rotulo>
 
 				<Rotulo nome="Primeira Reclamação?">
-					<span>???</span>
+					<!-- Resultado renderizado -->
+					<span>{{ usuario.escolha === true? 'Sim': 'Não' }}</span>
 				</Rotulo>
 
 			</div>
@@ -115,7 +164,8 @@ import Rotulo from './components/Rotulo.vue';
 			// Renderiza o 'tipo' de dado da propriedade de 'usuario.idade'
 			tipoIdade(){
 				return typeof this.usuario.idade
-			}
+			},
+
 		},
 
 		data(){
@@ -126,7 +176,27 @@ import Rotulo from './components/Rotulo.vue';
 					senha: '',
 					idade: '', // Podemos inicializar o objeto com um valor default
 					msg: '',
-				}
+					caracteristicas: [],
+					produto: 'web',
+					prioridade: 1,
+					escolha: true
+				},
+
+				// Array de Objetos como opções de seleção (select e option)
+				prioridades: [
+					{codigo: 1, nome: 'Baixa'},
+					{codigo: 2, nome: 'Moderada'},
+					{codigo: 3, nome: 'Alta'},
+				],
+
+				// Variavel que indica se o 'formulário' foi enviado ou não. Se for vai mostrar a visualização dos dados
+				enviado: false,
+			}
+		},
+
+		methods: {
+			enviar(){
+				this.enviado = true
 			}
 		}
 	}

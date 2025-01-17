@@ -1,12 +1,12 @@
 <template>
-    <!-- Comportamento clicável, que  altera o valor da variavel 'ligado' entre 'true e false'
-    OBS: O estilo do componente muda de acordo com esse comportamento-->
+
+    <!-- Ao invés de mexer diretamente na lógica, vamos 'EMITIR' um evento do TIPO INPUT. Que inverte a logica Boolean -->
     <div class="escolha"
-        @click="ligado = !ligado"
+        @click="$emit('input', !propsLigado)"
         :class="status"
     >
     
-        <div v-if="ligado" class="botao"></div>
+        <div v-if="propsLigado" class="botao"></div>
         <div v-else class="botao"></div>
 
     </div>
@@ -16,16 +16,20 @@
 <script>
 export default {
 
-    data() {
-        return {
-            ligado: false
+    // Recebe uma 'props' do Componente Pai. Essa 'props' será modificada sempre que o evento do tipo INPUT for emitido
+
+    // Props, nesse caso, substitui a estrutura antiga de 'data'
+    props: {
+        propsLigado: {
+            type: Boolean,
+            required: true
         }
     },
 
     /* Métodos re-renderizados apenas se sofrerem alteração */
     computed: {
         status(){
-            return this.ligado? 'ligado': 'desligado'
+            return this.propsLigado? 'ligado': 'desligado'
         }
     }
 }
