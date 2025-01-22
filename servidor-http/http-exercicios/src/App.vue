@@ -1,0 +1,43 @@
+<template>
+
+	<div id="app" class="container">
+
+		<h1>HTTP com Axios</h1>
+
+	</div>
+
+</template>
+
+<script>
+
+	export default {
+		
+		// created(){
+		// 	// Método POST para adicionar itens em um Banco de Dados. OBS -> Firebase pede que coloque no final do BD o Firebase
+		// 	this.$http.post('usuarios.json', {
+
+		// 		nome: 'Marcos',
+		// 		email: 'marcos@gmail.com',
+
+		// 	}).then(resposta => console.log(resposta))
+
+		// }
+
+	}
+
+</script>
+
+<style>
+#app {
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #2c3e50;
+	font-size: 1.5rem;
+}
+
+#app h1 {
+	text-align: center;
+	margin: 50px;
+}
+</style>
