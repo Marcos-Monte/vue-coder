@@ -1,6 +1,10 @@
 <template>
 	<div id="app">
 		<h1>Rotas com VueRouter</h1>
+
+		<!-- Adicionando os componentes, dinamicamente, baseado nas rotas -->
+		<router-view />
+
 	</div>
 </template>
 
