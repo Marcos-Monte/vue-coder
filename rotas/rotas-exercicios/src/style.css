@@ -54,6 +54,8 @@ button {
     border: 0;
 }
 
+/* Propriedades Personalizadas */
+
 [sucesso] {
     color: #FFF;
     background-color: #47af55;

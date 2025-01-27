@@ -13,9 +13,15 @@ Vue.use(Router)
 
 // Exportando Objeto de Configurações do Plugin
 export default new Router({
+    mode: 'history', // Valor pode ser 'hash' ou 'history'
     // Cada objeto dentro desse array, irá mapear 1 rota
     routes: [
         {path: '/', component: Inicio }, // Caminho, Componente
-        {path: '/usuario', component: Usuario }, // Caminho, Componente
+        // Adicionando o 'id' na rota do componente
+        {
+            path: '/usuario/:id', 
+            component: Usuario, 
+            props: true 
+        }, // Caminho, Componente, Aceitando Props
     ]
 })
