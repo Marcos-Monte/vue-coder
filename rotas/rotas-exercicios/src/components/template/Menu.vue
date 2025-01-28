@@ -19,24 +19,9 @@
             <!-- OBS: a propriedade 'active-class="active"' garante que o 'estilo' de link ativo seja adicionado (definido no css )-->
             
             <!-- Usuario recebe um ID -->
-            <router-link to="/usuario/1" tag="li" active-class="active">
+            <router-link to="/usuario" tag="li" active-class="active">
                 <!-- Tag 'encora' envolvendo a Label -->
-                <a>Usuario 1</a>
-            </router-link>
-
-            <!-- OBS: a propriedade 'to' é a rota do componente que será renderizado -->
-            <!-- OBS: a propriedade 'tag=li' quer dizer que o 'router-link' será um item de uma lista -->
-            <!-- OBS: a propriedade 'active-class="active"' garante que o 'estilo' de link ativo seja adicionado (definido no css )-->
-            
-            <!-- Usuario recebe um ID -->
-            <router-link to="/usuario/2" tag="li" active-class="active">
-                <!-- Tag 'encora' envolvendo a Label -->
-                <a>Usuario 2</a>
-            </router-link>
-
-            <router-link to="/usuario/3" tag="li" active-class="active">
-                <!-- Tag 'encora' envolvendo a Label -->
-                <a>Usuario 3</a>
+                <a>Usuario</a>
             </router-link>
 
         </ul>
