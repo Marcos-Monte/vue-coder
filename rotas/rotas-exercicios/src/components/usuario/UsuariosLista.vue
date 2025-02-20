@@ -31,7 +31,7 @@
         data(){
             return {
                 // Array de IDs que serão renderizados
-                ids: [1 , 2 , 3 ],
+                ids: [1 , 5 , 3 ],
 
             }
         }
