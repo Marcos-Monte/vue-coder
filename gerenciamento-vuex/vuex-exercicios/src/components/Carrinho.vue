@@ -4,6 +4,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Ação</th>
                         <th>Nome</th>
                         <th>Qtde</th>
                         <th>Preço</th>

@@ -21,19 +21,6 @@ import Resumo from './components/Resumo'
 export default {
 	name: 'app',
 	components: { Parametros, Loja, Carrinho, Resumo },
-	data(){
-		return {
-			produtos: [
-				{ nome: 'Produto 1', quantidade: 7, preco: 14.55 },
-				{ nome: 'Produto 2', quantidade: 10, preco: 22.99 },
-				{ nome: 'Produto 3', quantidade: 1, preco: 43.18 }
-			]
-		}
-	},
-
-	mounted(){
-		localStorage.setItem('produtos', JSON.stringify(this.produtos))
-	}
 }
 </script>
 

@@ -20,16 +20,23 @@
 // import { mapMutations } from 'vuex'
 // import { mapActions, mapMutations } from 'vuex'
 import { mapActions, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex/dist/vuex.common.js'
 
 export default {
     data() {
         return {
             sequencia: 1,
-            quantidade: 1,
-            preco: 9.99,
+            // quantidade: 1,
+            // preco: 9.99,
             nome: '',
         }
     },
+
+    computed: mapGetters({
+        quantidade: 'getQuantidade',
+        preco: 'getPreco',
+    }),
+
     methods: {
         // Mapeia as 'mutations' da 'store' e disponibiliza os indicados como métodos locais
         // ...mapMutations(['adicionarProduto', 'removerProduto']),
