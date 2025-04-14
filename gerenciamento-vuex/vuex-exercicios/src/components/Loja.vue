@@ -32,7 +32,7 @@ export default {
         }
     },
 
-    computed: mapGetters({
+    computed: mapGetters( {
         quantidade: 'getQuantidade',
         preco: 'getPreco',
     }),
@@ -40,8 +40,8 @@ export default {
     methods: {
         // Mapeia as 'mutations' da 'store' e disponibiliza os indicados como métodos locais
         // ...mapMutations(['adicionarProduto', 'removerProduto']),
-        ...mapMutations(['removerProduto']),
-        ...mapActions(['adicionarProdutoActions', 'removerProdutoActions']),
+        ...mapMutations('carrinho', ['removerProduto']),
+        ...mapActions('carrinho', ['adicionarProdutoActions', 'removerProdutoActions']),
 
         adicionar() {
             // Cria o produto com as informações do 'input' do usuário

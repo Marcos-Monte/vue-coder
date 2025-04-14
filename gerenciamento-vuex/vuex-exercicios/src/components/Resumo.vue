@@ -16,7 +16,7 @@ import { mapGetters } from 'vuex';
 export default {
 
     // Propriedades computadas que serão 're-renderizadas' em caso de alteração
-    computed: mapGetters({
+    computed: mapGetters('carrinho',{
         total: 'valorTotal', // variávle total, recebe o valor do getter 'valorTotal'
         dobro: 'totalDobrado', // variávle dobro, recebe o valor do getter 'totalDobrado'
     })

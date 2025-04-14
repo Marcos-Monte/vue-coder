@@ -1,4 +1,5 @@
 export default {
+    namespaced: true, // Usado para escalar a aplicação habilitando a possibilidade de utilizar o mesmo nome para vários modulos
      // Atributos
      state: { // Estado central, compartilhado pelo VUEX
         produtos: [],

@@ -36,13 +36,13 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
 
     // Propriedades computadas que serão 're-renderizadas' em caso de alteração
-    computed: mapGetters({
+    computed: mapGetters('carrinho', {
         produtos: 'produtosList', // Retorna toda a lista de produtos
         total: 'valorTotal' // variávle total, recebe o valor do getter 'valorTotal'
     }),
 
     methods: {
-        ...mapActions(['removerProdutoActions']),
+        ...mapActions('carrinho', ['removerProdutoActions']),
         
         // Versão de método que recebe o valor direto no componete via click
         remover(nome){
